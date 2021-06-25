@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="patient-login">
     <title>Patient - Login</title>
-
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: Cambria;
+        }
+    </style>
 </head>
 
 <body style="background-image: url(img/undraw_medicine.svg); background-position:cover; background-size:700px 1200px; background-repeat:no-repeat;">
