@@ -1,3 +1,61 @@
+<?php
+session_start();
+$FirstName = "";
+$LastName = "";
+$Gender = "";
+$Religion = "";
+$Email = "";
+$Username = "";
+$Password = "";
+$DoB = "";
+$PhoneNumber = "";
+$BloodGroup = "";
+$PresentAddress = "";
+$PermanentAddress = "";
+if (!isset($_SESSION['id'])) {
+    $Message = "You have to SIGN IN FIRST";
+} else {
+    $id = Test_User_Input($_SESSION['id']);
+    if (isset($_SESSION['eid'])) {
+        $eid = Test_User_Input($_SESSION['eid']);
+    }
+    $LoginSuccess = false;
+    define("filepath", "data/patient-details.txt");
+
+    $retrievedData = file_get_contents(filepath);
+    $retrievedData = json_decode($retrievedData);
+    if ($retrievedData != null) {
+        foreach ($retrievedData as $user) {
+            if ($user->userName == $id) {
+                $FirstName = $user->firstName;
+                $LastName = $user->lastName;
+                $Gender = $user->gender;
+                $Religion = $user->religion;
+                $Email = $user->email;
+                $Username = $user->userName;
+                $Password = $user->password;
+                $DoB = $user->dob;
+                $PhoneNumber = $user->phoneNumber;
+                $BloodGroup = $user->bloodGroup;
+                $LoginSuccess = true;
+                $Message = "Welcome " . $FirstName . " " . $LastName;
+                break;
+            }
+        }
+    } else {
+        $Message = "The Database is Empty!";
+    }
+
+    if (!$LoginSuccess) {
+        $Message = "User not found!";
+    }
+}
+function Test_User_Input($Data)
+{
+    return trim(htmlspecialchars(stripslashes($Data)));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,15 +83,15 @@
                     <div class="binfo-left-data">
                         <div>
                             <h4 style="color: 353c4e; margin-bottom: 5px;">First Name</h4>
-                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">Md Shahriar</p>
+                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $FirstName; ?></p>
                         </div>
                         <div>
                             <h4 style="color: 353c4e; margin-bottom: 5px;">Gender</h4>
-                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">Male</p>
+                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $Gender; ?></p>
                         </div>
                         <div>
                             <h4 style="color: 353c4e; margin-bottom: 5px;">Religion</h4>
-                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">Muslim</p>
+                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $Religion; ?></p>
                         </div>
                     </div>
                 </div>
@@ -41,11 +99,11 @@
                     <div class="binfo-right-data">
                         <div>
                             <h4 style="color: 353c4e; margin-bottom: 5px;">Last Name</h4>
-                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">Abir</p>
+                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $LastName; ?></p>
                         </div>
                         <div>
                             <h4 style="color: 353c4e; margin-bottom: 5px;">Date of Birth</h4>
-                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">11 June 1999</p>
+                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $DoB; ?></p>
                         </div>
                     </div>
                 </div>
@@ -57,13 +115,13 @@
                 <div class="cinfo-left" style="width:45%;">
                     <div class="cinfo-left-data">
                         <h4 style="color: 353c4e; margin-bottom: 5px;">Phone Number</h4>
-                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">+8801704948468</p>
+                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $PhoneNumber; ?></p>
                     </div>
                 </div>
                 <div class="cinfo-right">
                     <div class="cinfo-right-data">
                         <h4 style="color: 353c4e; margin-bottom: 5px;">Email</h4>
-                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">19-39293-1@student.aiub.edu</p>
+                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $Email; ?></p>
                     </div>
                 </div>
             </div>
@@ -75,13 +133,13 @@
                 <div class="ainfo-left" style="width:45%;">
                     <div class="ainfo-left-data">
                         <h4 style="color: 353c4e; margin-bottom: 5px;">Present Address</h4>
-                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">House 10, Road 2A, Block F, Banani, Dhaka-1213</p>
+                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $PresentAddress; ?></p>
                     </div>
                 </div>
                 <div class="ainfo-right">
                     <div class="ainfo-right-data">
                         <h4 style="color: 353c4e; margin-bottom: 5px;">Permanent Address</h4>
-                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">House 16, Road 06, Block C, Banani, Dhaka-1213</p>
+                        <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $PermanentAddress; ?></p>
                     </div>
                 </div>
             </div>
@@ -93,11 +151,11 @@
                     <div class="linfo-left-data">
                         <div>
                             <h4 style="color: 353c4e; margin-bottom: 5px;">Username</h4>
-                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;">abir101</p>
+                            <p style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $Username; ?></p>
                         </div>
                         <div>
                             <h4 style="color: 353c4e; margin-bottom: 5px;">Password</h4>
-                            <input style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3; border:none; background: #f3f3f3;" type="password" value="asdfg" readonly>
+                            <input style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3; border:none; background: #f3f3f3;" type="password" value="<?php echo $Password; ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -111,11 +169,11 @@
             <!-- Profile Picture of the patient -->
             <img src="" alt="user" width="100">
             <!-- Name of the Patient -->
-            <h4><?php  ?></h4>
+            <h4><?php echo $Message; ?></h4>
             <!-- Edit Profile Option -->
             <div style="margin: 10px 0px 10px 0px;">
                 <!-- <button type="submit" value="submit" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px;">Edit Profile</button> -->
-                <a href="profile-edit-patient.php" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px; max-width: 20%; text-decoration:none; text-align:center;">Edit Profile</a>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post"><a href="profile-edit-patient.php" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px; max-width: 20%; text-decoration:none; text-align:center;" onclick="<?php $_SESSION['pid'] = $Username; ?>">Edit Profile</a></form>
             </div>
         </div>
     </div>

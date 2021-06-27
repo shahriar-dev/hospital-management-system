@@ -87,9 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $emptyField = true;
         } else {
             $PhoneNumber = Test_User_Input($_POST['phoneNumber']);
-            $pattern1 = preg_match("/\+?([0-9]{1,})([0-9]{11})/", $PhoneNumber);
-            $pattern2 = preg_match("/^[0-9]{11}/", $PhoneNumber);
-            if (!$pattern1 && !$pattern2) {
+            $pattern1 = preg_match("/^[0-9]{11}/", $PhoneNumber);
+            if (!$pattern1) {
                 $PhoneNumberError = "Invalid Format";
                 $emptyField = true;
             }
@@ -101,10 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $emptyField = true;
         } else {
             $Email = Test_User_Input($_POST['email']);
-            if (!preg_match("/[a-zA-Z0-9._]{3,}@[a-zA-Z0-9._]{3,}[.]{1}[a-zA-Z0-9._]{2,}/", $Email)) {
-                $EmailError = "Invalid Format";
-                $emptyField = true;
-            }
         }
         /* Username */
         if (empty($_POST['userName'])) {
@@ -140,13 +135,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 "firstName" => $FirstName, "lastName" => $LastName, "gender" => $Gender, "dob" => $DoB, "religion" => $Religion, "bloodGroup" => $BloodGroup,
                 "phoneNumber" => $PhoneNumber, "email" => $Email, "userName" => $Username, "password" => $Password,
             );
-            $_SESSION['id'] = $Username;
+            //$_SESSION['id'] = $Username;
             if (file_get_contents(filepath) != null) {
 
                 $retrievedData = json_decode(file_get_contents(filepath));
                 $retrievedData[] = $data;
                 $result = file_put_contents(filepath, json_encode($retrievedData, JSON_PRETTY_PRINT));
                 if ($result) {
+                    $_SESSION['id'] = $Username;
                     header("Location: profile-patient.php");
                 } else {
                     $ErrorMessage = "Error Saving Information!";
@@ -223,8 +219,8 @@ function Test_User_Input($Data)
                             <tr>
                                 <td><label for=" input_gender">Gender</label></td>
                                 <td>
-                                    <input type="radio" id="input_gender" name="gender" <?php if (isset($_POST['gender']) && $_POST['gender'] == "Male") echo "checked"; ?> value="Male">Male</input>
-                                    <input type="radio" id="input_gender" name="gender" <?php if (isset($_POST['gender']) && $_POST['gender'] == "Female") echo "checked"; ?> value="Female">Female</input>
+                                    <input type="radio" id="input_gender" name="gender" value="Male">Male</input>
+                                    <input type="radio" id="input_gender" name="gender" value="Female">Female</input>
                                 </td>
                                 <td><label for="" style="color: red;"><?php echo $GenderError; ?></label></td>
                             </tr>
@@ -233,9 +229,9 @@ function Test_User_Input($Data)
                                 <td>
                                     <select name="religion" id="input_religion" value="">
                                         <option disabled selected value="default">--Choose a Option--</option>
-                                        <option name="religion" <?php if (isset($_POST['religion']) && $_POST['religion'] == "muslim") echo "selected"; ?> value="Muslim">Muslim</option>
-                                        <option name="religion" <?php if (isset($_POST['religion']) && $_POST['religion'] == "hindu") echo "selected"; ?> value="Hindu">Hindu</option>
-                                        <option name="religion" <?php if (isset($_POST['religion']) && $_POST['religion'] == "christian") echo "selected"; ?> value="Christian">Christian</option>
+                                        <option name="religion">Muslim</option>
+                                        <option name="religion" value="Hindu">Hindu</option>
+                                        <option name="religion" value="Christian">Christian</option>
                                     </select>
                                 </td>
                                 <td><label for="" style="color: red;"><?php echo $ReligionError; ?></label></td>
@@ -250,14 +246,14 @@ function Test_User_Input($Data)
                                 <td>
                                     <select name="bloodgroup" id="input_bloodgroup" value="">
                                         <option disabled selected value="default">--Choose a Option--</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "A+") echo "selected"; ?> value="A+">A+</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "A-") echo "selected"; ?> value="A-">A-</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "B+") echo "selected"; ?> value="B+">B+</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "B-") echo "selected"; ?> value="B-">B-</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "O+") echo "selected"; ?> value="O+">O+</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "O-") echo "selected"; ?> value="O-">O-</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "AB+") echo "selected"; ?> value="AB+">AB+</option>
-                                        <option id="bloodgroup" name="bloodGroup" <?php if (isset($_POST['bloodgroup']) && $_POST['bloodgroup'] == "AB-") echo "selected"; ?> value="AB-">AB-</option>
+                                        <option id="bloodgroup" name="bloodGroup"> value="A+">A+</option>
+                                        <option tid="bloodgroup" name="bloodGroup"> value="A-">A-</option>
+                                        <option id="bloodgroup" name="bloodGroup"> value="B+">B+</option>
+                                        <option id="bloodgroup" name="bloodGroup"> value="B-">B-</option>
+                                        <option id="bloodgroup" name="bloodGroup"> value="O+">O+</option>
+                                        <option id="bloodgroup" name="bloodGroup"> value="O-">O-</option>
+                                        <option id="bloodgroup" name="bloodGroup"> value="AB+">AB+</option>
+                                        <option id="bloodgroup" name="bloodGroup"> value="AB-">AB-</option>
                                     </select>
                                 </td>
                                 <td><label for="" style="color: red;"><?php echo $BloodGroupError; ?></label></td>

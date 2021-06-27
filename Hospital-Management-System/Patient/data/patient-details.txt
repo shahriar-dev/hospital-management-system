@@ -1,14 +1,74 @@
 [
     {
-        "firstName": "Shahriar",
-        "lastName": "Abir",
+        "firstName": "Abir",
+        "lastName": "Shahriar",
         "gender": "Male",
-        "dob": "1999-06-11",
-        "religion": "muslim",
+        "dob": "2021-06-19",
+        "religion": "Christian",
         "bloodGroup": "O+",
         "phoneNumber": "+8801704948468",
         "email": "aa.shahriar11@gmail.com",
-        "userName": "vader101",
+        "userName": "abir11",
         "password": "Aa1"
+    },
+    {
+        "firstName": "Abir",
+        "lastName": "Shahriar",
+        "gender": "Male",
+        "dob": "2021-06-02",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "01704948468",
+        "email": "aa.shahriar@outlook.com",
+        "userName": "vader101",
+        "password": "Bb1"
+    },
+    {
+        "firstName": "Sakif",
+        "lastName": "Ahmed",
+        "gender": "Male",
+        "dob": "2021-04-28",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "01234567891",
+        "email": "sakif.ahmed@gmail.com",
+        "userName": "sakif28",
+        "password": "Ss1"
+    },
+    {
+        "firstName": "Haque",
+        "lastName": "Rakirul",
+        "gender": "Female",
+        "dob": "1999-08-25",
+        "religion": "Christian",
+        "bloodGroup": "O+",
+        "phoneNumber": "01623457896",
+        "email": "signorrakir@gmail.com",
+        "userName": "rakirul08",
+        "password": "Rr1"
+    },
+    {
+        "firstName": "Mansur",
+        "lastName": "Aswaad",
+        "gender": "Male",
+        "dob": "2021-06-01",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "01234567896",
+        "email": "aa.shahriar@outlook.com",
+        "userName": "aswaad01",
+        "password": "Aa11"
+    },
+    {
+        "firstName": "Jahidul",
+        "lastName": "Islam",
+        "gender": "Male",
+        "dob": "2021-06-25",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "01236987451",
+        "email": "jahidul@gmail.com",
+        "userName": "jahidul09",
+        "password": "Jj1"
     }
 ]
