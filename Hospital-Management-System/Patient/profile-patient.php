@@ -18,6 +18,7 @@ if (!isset($_SESSION['id'])) {
     $id = Test_User_Input($_SESSION['id']);
     if (isset($_SESSION['eid'])) {
         $eid = Test_User_Input($_SESSION['eid']);
+
     }
     $LoginSuccess = false;
     define("filepath", "data/patient-details.txt");

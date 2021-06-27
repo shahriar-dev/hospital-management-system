@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         } else {
             $Religion = Test_User_Input($_POST['religion']);
         }
-        /* Religion */
+        /* Bloodgroup */
         if (empty($_POST['bloodgroup']) || Test_User_Input($_POST['bloodgroup']) == "default") {
             $BloodGroupError = "Blood Group Required!";
             $emptyField = true;
