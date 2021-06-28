@@ -18,7 +18,7 @@ $changeStatus = false;
 $LoginSuccess = false;
 
 $fnameC = $lnameC = $genderC = $religionC = $emailC = $usernameC = $passwordC = $dobC = $pnumberC = $bgroupC = false;
-define("filepath", "data/patient-details.txt");
+define("filepath", "../data/patient-details.json");
 
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -181,6 +181,16 @@ function Test_User_Input($Data)
 </head>
 
 <body style="background:#f3f3f3; background-image: url(img/undraw_profile_details.svg); background-position:right bottom; background-size:650px 700px; background-repeat:no-repeat; background-attachment: fixed; height:1000px;">
+    <div>
+        <?php
+        include "../Controllers/Include/header.php";
+        ?>
+    </div>
+    <div>
+        <?php
+        include "../Controllers/Include/navigation.php";
+        ?>
+    </div>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <div style="position: absolute; top: 50%; left:50%; transform:translate(-50%, -50%); width:1000px; height:75%; display:flex; box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);">
             <div class="left" style="width: 65%; background:#fff; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding: 30px 25px;">
@@ -305,7 +315,12 @@ function Test_User_Input($Data)
             </div>
         </div>
     </form>
-
+    <div style="top: 90%; left:45%; position:fixed;">
+        <hr>
+        <?php
+        include "../Controllers/Include/footer.php";
+        ?>
+    </div>
 </body>
 
 </html>

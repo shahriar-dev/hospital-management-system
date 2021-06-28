@@ -13,15 +13,14 @@ $BloodGroup = "";
 $PresentAddress = "";
 $PermanentAddress = "";
 if (!isset($_SESSION['id'])) {
-    $Message = "You have to SIGN IN FIRST";
+    header("Location: login-patient.php");
 } else {
     $id = Test_User_Input($_SESSION['id']);
     if (isset($_SESSION['eid'])) {
         $eid = Test_User_Input($_SESSION['eid']);
-
     }
     $LoginSuccess = false;
-    define("filepath", "data/patient-details.txt");
+    define("filepath", "../data/patient-details.json");
 
     $retrievedData = file_get_contents(filepath);
     $retrievedData = json_decode($retrievedData);
@@ -74,7 +73,17 @@ function Test_User_Input($Data)
 </head>
 
 <body style="background:#f3f3f3; background-image: url(img/undraw_profile_details.svg); background-position:right bottom; background-size:650px 700px; background-repeat:no-repeat; background-attachment: fixed;">
-    <div style="position: absolute; top: 50%; left:50%; transform:translate(-50%, -50%); width:1000px; display:flex; box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);">
+    <div style="margin:20px 0 20px 0;">
+        <?php
+        include "../Controllers/Include/header.php";
+        ?>
+    </div>
+    <div style="margin: 0 10px 0 10px;">
+        <?php
+        include "../Controllers/Include/navigation.php";
+        ?>
+    </div>
+    <div style="position: absolute; top: 50%; left:50%; transform:translate(-50%, -50%); width:1000px; display:flex; box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08); ">
         <div class="left" style="width: 65%; background:#fff; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding: 30px 25px;">
             <h1 align="center" style="padding-bottom: 10px;">Profile</h1>
             <h3 style="color: #353c4e; letter-spacing:5px; text-transform:uppercase;">Basic Information</h3>
@@ -177,6 +186,12 @@ function Test_User_Input($Data)
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post"><a href="profile-edit-patient.php" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px; max-width: 20%; text-decoration:none; text-align:center;" onclick="<?php $_SESSION['pid'] = $Username; ?>">Edit Profile</a></form>
             </div>
         </div>
+    </div>
+    <div style="top: 90%; left:45%; position:fixed;">
+        <hr>
+        <?php
+        include "../Controllers/Include/footer.php";
+        ?>
     </div>
 </body>
 

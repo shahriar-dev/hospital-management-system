@@ -5,9 +5,9 @@ $Password = "";
 
 $UsernameError = "";
 $PasswordError = "";
-
+$LoginError = "";
 $emptyField = false;
-define("filepath", "data/patient-details.txt");
+define("filepath", "../data/patient-details.json");
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if (isset($_POST['submit'])) {
         /* Username */
@@ -28,15 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $emptyField = true;
         } else {
             $Password = Test_User_Input($_POST['password']);
-
-            $UpperCase = preg_match("@[A-Z]@", $Password);
-            $LowerCase = preg_match("@[a-z]@", $Password);
-            $Number = preg_match("@[0-9]@", $Password);
-
-            if (!$UpperCase || !$LowerCase || !$Number) {
-                $PasswordError = "Password must contain 1 UPPERCASE, 1 LOWERCASE and 1 NUMBER";
-                $emptyField = true;
-            }
         }
 
         if (!$emptyField) {
@@ -47,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                         $_SESSION['id'] = $Username;
                         header("Location: profile-patient.php");
                         exit();
+                    } else {
+                        $LoginError = "Login FAILED! Check credentials..";
                     }
                 }
             }
@@ -67,16 +60,15 @@ function Test_User_Input($Data)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="patient-login">
     <title>Patient - Login</title>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            font-family: Cambria;
-        }
-    </style>
+
 </head>
 
 <body style="background-image: url(img/undraw_medicine.svg); background-position:cover; background-size:700px 1200px; background-repeat:no-repeat;">
+    <div>
+        <?php
+        require "../Controllers/Include/header.php";
+        ?>
+    </div>
     <div style="border-radius: 15px 15px 0px 0px; background-color:rgb(0,0,0,6); margin:auto; color:#6460A4; width:800px;">
         <h2 align="center">Login - Patient</h2>
     </div>
@@ -90,16 +82,30 @@ function Test_User_Input($Data)
         <div style="margin: 10px 0px 10px 0px;">
             <label for="password" style="display: block; margin:3px;">Password</label>
             <input type="password" name="password" style="display: block; margin:3px; border-radius:5px; height: 30px; width:93%; font-size:16px; border: 2px solid #9A94E0;" value="<?php echo $Password ?>">
-            <label for="error_password"><?php echo $PasswordError; ?></label>
+            <label for="error_password" style="color: red;"><?php echo $PasswordError; ?></label>
         </div>
         <div style="margin: 10px 0px 10px 0px;">
-            <input type="submit" name="submit" value="Login" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px;">
+            <div>
+                <input type="submit" name="submit" value="Login" style="display: inline-block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px;">
+
+                <label for="error_message" style="color: red;"><?php echo $LoginError; ?></label>
+            </div>
         </div>
 
         <p>
             Not yet Registered? <a href="registration-patient.php">Sign up</a>
+            <span style="padding: 0 0 0 150px;">
+                Forgotten Password? <a href="change-password-patient.php">Click here!</a>
+            </span>
         </p>
+
     </form>
+    <div style="top: 90%; left:45%; position:fixed;">
+        <hr>
+        <?php
+        require "../Controllers/Include/footer.php";
+        ?>
+    </div>
 </body>
 
 </html>

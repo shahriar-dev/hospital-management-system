@@ -1,0 +1,26 @@
+[
+    {
+        "firstName": "Abir",
+        "lastName": "Shahriar",
+        "gender": "Male",
+        "dob": "2021-06-11",
+        "religion": "Muslim",
+        "bloodGroup": "A+",
+        "phoneNumber": "01704948468",
+        "email": "aa.shahriar11@gmail.com",
+        "userName": "abir11",
+        "password": "Aa1"
+    },
+    {
+        "firstName": "Fayeaz",
+        "lastName": "Ahmed",
+        "gender": "Male",
+        "dob": "2021-01-05",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "019131816111",
+        "email": "faiaaza@yahoo.com",
+        "userName": "fayeaz05",
+        "password": "Ff1"
+    }
+]

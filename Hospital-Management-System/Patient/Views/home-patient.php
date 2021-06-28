@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <div>
+        <?php
+        include "../Patient/Controllers/Include/header.php"
+        ?>
+    </div>
     <div style="position: absolute;  width: 100%; height: 100%; display:flex;">
         <div class="left" style="width: 20%; background:#fff; border-top-left-radius: 10px; border-bottom-left-radius: 10px; padding: 30px 25px;">
             <div>
@@ -67,6 +72,12 @@
         <div class="right" style="width: 80%; background:#fff; border-top-right-radius:10px; border-bottom-right-radius:10px;">
             <iframe src="welcome-page-patient.php" width="100%" height="100%" frameborder="0" name="content-frame"></iframe>
         </div>
+    </div>
+    <div style="top: 90%; left:45%; position:fixed;">
+        <hr>
+        <?php
+        include "../Controllers/Include/footer.php";
+        ?>
     </div>
 </body>
 

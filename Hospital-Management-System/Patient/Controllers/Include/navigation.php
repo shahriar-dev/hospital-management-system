@@ -1,0 +1,16 @@
+<header style="background-color: black; display:flex; justify-content:space-between; align-items:center; padding: 30px 10%;">
+    <nav>
+        <ul style="list-style: none;">
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../Patient/">Home</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../../Hospital-Management-System/Patient/Views/profile-patient.php">Profile</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../../Hospital-Management-System/Patient/Views/schedule-appointment-patient.php">Schedule an Appointment</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../../Hospital-Management-System/Patient/Views/medicine/search-medicine-patient.php">Medicine</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"> <a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../../Hospital-Management-System/Patient/Views/bloodbank/blood-purchase-patient.php">Blood Purchase</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../../Hospital-Management-System/Patient/Views/bloodbank/blood-donation-history-patient.php">Blood Donation History</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../../Hospital-Management-System/Patient/Views/cabin/search-cabin-patient.php">Cabin Booking</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../../Hospital-Management-System/Patient/Views/add-medical-records-patient.php">Add Records</a></li>
+            <li style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px;"><a style="font-size:16px; color:#edf0f1; text-decoration:none;" href="../../../Hospital-Management-System/Views/add-medical-records-patient.php">Previous Records</a></li>
+        </ul>
+    </nav>
+    <a style="font-size:16px; color:#edf0f1; text-decoration:none; display:inline-block; padding:0px 20px; background: #D41E21; color:#fff; border-radius:5px;" href="../../../../Hospital-Management-System/Patient/Views/logout-patient.php">Logout</a>
+</header>

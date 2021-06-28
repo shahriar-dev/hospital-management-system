@@ -26,10 +26,13 @@ $ErrorMessage = "";
 $flag = 0;
 $emptyField = false;
 
-define("filepath", "data/patient-details.txt");
+define("filepath", "../data/patient-details.json");
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['back'])) {
+        header("Location: login-patient.php");
+    }
+    if (isset($_POST['register'])) {
         /* name */
         if (empty($_POST['firstName'])) {
             $FirstNameError = "First Name is Required!";
@@ -147,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $retrievedData[] = $data;
                 $result = file_put_contents(filepath, json_encode($retrievedData, JSON_PRETTY_PRINT));
                 if ($result) {
-                    header("Location: profile-patient.php");
+                    header("Location: ../Views/profile-patient.php");
                 } else {
                     $ErrorMessage = "Error Saving Information!";
                 }
@@ -187,6 +190,11 @@ function Test_User_Input($Data)
 </style>
 
 <body style="background-image: url(img/undraw_medicine.svg); background-position:cover; background-size:700px 1200px; background-repeat:no-repeat;">
+    <div>
+        <?php
+        require "../Controllers/Include/header.php";
+        ?>
+    </div>
     <div style="border-radius: 15px 15px 0px 0px; background-color:rgb(0,0,0,6); margin:auto; color:#6460A4; width:800px;">
         <h1 align="center">Patient Resigtration</h1>
     </div>
@@ -310,7 +318,10 @@ function Test_User_Input($Data)
                 </fieldset>
                 </fieldset>
                 <div>
-                    <input type="submit" name="submit" value="Register" style="margin:3px; padding: 10px; font-size: 14px; background-color: #755BBD; color: #fff; border:none; border-radius: 6px; width: 100%; text-decoration:none; text-align:center; cursor:pointer">
+                    <input type="submit" name="register" value="Register" style="margin:3px; padding: 10px; font-size: 14px; background-color: #755BBD; color: #fff; border:none; border-radius: 6px; width: 100%; text-decoration:none; text-align:center; cursor:pointer">
+                </div>
+                <div>
+                    <input type="submit" name="back" value="Already Registered? Click here!" style="margin:3px; padding: 10px; font-size: 14px; background-color: #755BBD; color: #fff; border:none; border-radius: 6px; width: 100%; text-decoration:none; text-align:center; cursor:pointer">
                 </div>
                 <div>
                     <label for="" style="color: red;"><?php echo $ErrorMessage; ?></label>
@@ -318,6 +329,12 @@ function Test_User_Input($Data)
             </form>
         </div>
 
+    </div>
+    <div style="top: 90%; left:45%; position:fixed;">
+        <hr>
+        <?php
+        include "../Controllers/Include/footer.php";
+        ?>
     </div>
 </body>
 

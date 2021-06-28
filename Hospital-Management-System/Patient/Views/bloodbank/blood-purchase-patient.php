@@ -5,12 +5,12 @@ $PerBagCost = 1000;
 $Cost = $PerBagCost * 1;
 $emptyField = false;
 $BagDetails = "";
-define("filepath1", "data/patient-details.txt");
-define("filepath2", "data/blood-order-details.txt");
+define("filepath1", "../data/patient-details.json");
+define("filepath2", "../data/blood-order-details.json");
 
 
 if (!isset($_SESSION['id'])) {
-    header("location: blood-purchase-error-patient.php");
+    header("location: ../login-patient.php");
     exit();
 } else {
     $id = Test_User_Input($_SESSION['id']);
@@ -67,19 +67,6 @@ if (!isset($_SESSION['id'])) {
 
                                 if (!empty($Remarks)) {
                                     $BagDetails .= "\nRemarks: " . $Remarks;
-                                    $data = array(
-                                        "patientName" => $user->firstName . " " . $user->lastName,
-                                        "gender" => $user->gender, "bloodGroup" => $BloodGroup,
-                                        "quantity" => $BloodBagQuantity, "totalCost" => $Cost,
-                                        "dob" => $user->dob, "remarks" => $Remarks, "userName" => $id
-                                    );
-                                } else {
-                                    $data = array(
-                                        "patientName" => $user->firstName . " " . $user->lastName,
-                                        "gender" => $user->gender, "bloodGroup" => $BloodGroup,
-                                        "quantity" => $BloodBagQuantity, "totalCost" => $Cost,
-                                        "dob" => $user->dob, "userName" => $id
-                                    );
                                 }
                             }
                             if (!empty($Remarks)) {
@@ -144,6 +131,16 @@ function Test_User_Input($Data)
 </head>
 
 <body>
+    <div>
+        <?php
+        include "../../Controllers/Include/header.php";
+        ?>
+    </div>
+    <div>
+        <?php
+        include "../../Controllers/Include/navigation.php";
+        ?>
+    </div>
     <h1>Blood Purchase - Patient</h1>
     <hr>
     <div style="position:absolute; width: 100%; height: 100%; display:flex;">
@@ -200,10 +197,16 @@ function Test_User_Input($Data)
                 <p>
                     <textarea name="bagdetails" cols="30" rows="10"><?php echo $BagDetails; ?></textarea>
                 </p>
+
             </div>
         </div>
     </div>
-
+    <div style="top: 90%; left:45%; position:fixed;">
+        <hr>
+        <?php
+        include "../../Controllers/Include/footer.php";
+        ?>
+    </div>
 </body>
 
 </html>
