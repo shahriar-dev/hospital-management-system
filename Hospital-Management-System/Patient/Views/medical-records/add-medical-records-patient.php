@@ -12,18 +12,21 @@
 <body>
     <div>
         <?php
-        include "../Controllers/Include/header.php";
+        include "../../Controllers/Include/header.php";
         ?>
     </div>
     <div>
         <?php
-        include "../Controllers/Include/navigation.php";
+        include "../../Controllers/Include/navigation.php";
         ?>
+    </div>
+    <div>
+        <h1>Add Medical Records</h1>
     </div>
     <div style="top: 90%; left:45%; position:fixed;">
         <hr>
         <?php
-        require "../Controllers/Include/footer.php";
+        require "../../Controllers/Include/footer.php";
         ?>
     </div>
 </body>

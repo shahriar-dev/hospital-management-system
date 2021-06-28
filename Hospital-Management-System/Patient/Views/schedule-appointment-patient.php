@@ -17,7 +17,7 @@ define("filepath1", "data/patient-details.json");
 define("filepath2", "data/appointment-details.json");
 
 if (!isset($_SESSION['id'])) {
-    header("location: appointment-error-patient.php");
+    header("Location: login-patient.php");
     exit();
 } else {
     $id = Test_User_Input($_SESSION['id']);

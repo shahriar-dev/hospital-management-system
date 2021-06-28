@@ -250,7 +250,7 @@ function Test_User_Input($Data)
                     <div class="cinfo-left" style="width:45%;">
                         <div class="cinfo-left-data">
                             <h4 style="color: 353c4e; margin-bottom: 5px;">Phone Number</h4>
-                            <input type="tel" name="phoneNumber" style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $FirstName ?>/input>
+                            <input type="tel" name="phoneNumber" style="display: block; font-size: 16px; margin-bottom: 10px; color: #919aa3;"><?php echo $PhoneNumber ?></input>
                         </div>
                     </div>
                     <div class="cinfo-right">
