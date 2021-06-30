@@ -13,20 +13,26 @@ if (!isset($_SESSION['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Donation History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
+    <div style="margin: 20px 0 20px 0;">
         <?php
         include "../../Controllers/Include/header.php";
         ?>
     </div>
-    <div>
+    <div style="margin: 0 10px 0 10px;">
         <?php
         include "../../Controllers/Include/navigation.php";
         ?>
     </div>
-    <div style="position: absolute; top: 20%; left:20%; transform:translate(-20%, -20%); width:1000px;">
+    <div style="position: absolute; top: 20%; left:20%; width:1000px;">
         <h1>Blood Donation History</h1>
         <div>
             <table style="position: absolute; width:100%;" border="1px">

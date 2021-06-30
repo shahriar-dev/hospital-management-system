@@ -16,12 +16,12 @@
         ?>
     </div>
 
-    <div style="width: 100%; background: #586ABB; color: #fff;">
-        <h1 style="font-size: 60px; letter-spacing: 10px; font-style:italic;">Welcome to Patient Module</h1>
+    <div style=" background: #586ABB; color: #fff;">
+        <h1 style="font-size: 60px; letter-spacing: 10px; font-style:italic;" align="center">Welcome to Patient Module</h1>
     </div>
     <div style="transform:translate(45%, 60%); color:#fff; ">
-        <a href="../Patient/Views/login-patient.php" style="padding:0px 5px 0px 5px; font-size: 30px; letter-spacing:10px; text-decoration:none; border: 1px solid; background: #848CC5; color:#fff;
-        border-radius: 20px;">Let's Go <strong>&#x2192;</strong></a>
+        <a href="../Patient/Views/login-patient.php" style="padding:0px 5px 5px 15px; font-size: 30px; letter-spacing:10px; text-decoration:none; border: 1px solid; background: #848CC5; color:#fff;
+        border-radius: 20px;">Login<strong>&#x2192;</strong></a>
     </div>
     <div style="top: 90%; left:50%; transform:translate(-90%, -50%); position:fixed;">
         <hr>

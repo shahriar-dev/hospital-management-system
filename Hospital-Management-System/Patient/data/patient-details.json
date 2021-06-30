@@ -1,7 +1,7 @@
 [
     {
-        "firstName": "Abir",
-        "lastName": "Shahriar",
+        "firstName": "Shahriar",
+        "lastName": "Abir",
         "gender": "Male",
         "dob": "2021-06-11",
         "religion": "Muslim",
@@ -22,5 +22,31 @@
         "email": "faiaaza@yahoo.com",
         "userName": "fayeaz05",
         "password": "Ff1"
+    },
+    {
+        "firstName": "Sakif",
+        "lastName": "Ahmed",
+        "gender": "Male",
+        "dob": "2021-06-02",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "01234567891",
+        "email": "someblockcalledsakif@gmail.com",
+        "userName": "sakif02",
+        "password": "Ss1"
+    },
+    {
+        "firstName": "Rakirul",
+        "lastName": "Haque",
+        "gender": "Male",
+        "dob": "2021-08-25",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "01456789231",
+        "email": "signorrakir@gmail.com",
+        "userName": "rakirul25",
+        "password": "Hh1",
+        "presentAddress": "220 Spencer Street",
+        "permanentAddress": ""
     }
 ]

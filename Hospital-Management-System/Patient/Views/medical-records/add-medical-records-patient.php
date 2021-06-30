@@ -7,15 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="medical-records">
     <title>Medical Records - Patient</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
+    <div style="margin: 20px 0 20px 0">
         <?php
         include "../../Controllers/Include/header.php";
         ?>
     </div>
-    <div>
+    <div style="margin: 0 10px 0 10px;">
         <?php
         include "../../Controllers/Include/navigation.php";
         ?>
