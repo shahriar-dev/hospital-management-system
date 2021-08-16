@@ -1,105 +1,84 @@
 <?php
-require "../../../Hospital-Management-System/Patient/Controllers/Validation/schedule-appointment.php";
+// require "../../../Hospital-Management-System/Patient/Controllers/Validation/schedule-appointment.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<!-- <!DOCTYPE html>
+<html lang="en"> -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="schedule-apointment-patient">
-    <title>Schedule Appointment - Patient</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="./../assets/css/style_appointment.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
-    <div style="margin:20px 0 20px 0;">
-        <?php
-        require '../Controllers/Include/header.php';
-        ?>
-    </div>
-
-    <div style="margin: 0 10px 0 10px;">
-        <?php
-        include "../Controllers/Include/navigation.php";
-        ?>
-    </div>
-    <div style="margin-top: 20px;">
-        <h1>Schedule Appointment - Patient</h1>
-        <hr>
-        <div style="position:absolute; width: 100%; height: 100%; display:flex;">
-
-            <div class="left" style="width:65%;">
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-                    <div class="info" style="display: flex;">
-                        <div style="margin-right: 50px;">
-                            <h3>Appointment Date</h3>
-                            <input type="date" name="appointmentdate" value="<?php echo $AppointmentDate; ?>">
-                            <label for="appointmentDateError" style="display: block; color: red;"><?php echo $AppointmentDateError; ?></label>
-                        </div>
-                        <div style="margin-right: 50px;">
-                            <h3>Department</h3>
-                            <select name="department" id="input_department" value="" style="height:30px;">
-                                <option disabled selected value="default">--Choose a Option--</option>
-                                <option id="deparment" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Medicine") echo "selected"; ?> value="Medicine">Medicine</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Arthopedic") echo "selected"; ?> value="Arthopedic">Arthopedic</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Neuromedicine") echo "selected"; ?> value="Neuromedicine">Neuromedicine</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Neurosurgeon") echo "selected"; ?> value="Neurosurgeon">Neurosurgeon</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Dermatologist") echo "selected"; ?> value="Dermatologist">Dermatologist</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Psychiatrist") echo "selected"; ?> value="Psychiatrist">Psychiatrist</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Cardiologist") echo "selected"; ?> value="Cardiologist">Cardiologist</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Paediatrician") echo "selected"; ?> value="Paediatrician">Paediatrican</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Dentistry") echo "selected"; ?> value="Dentistry">Dentistry</option>
-                                <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Gynecologist") echo "selected"; ?> value="Gynecologist">Gynecologist</option>
-                            </select>
-                            <label for="departmentError" style="color: red; display: block;"><?php echo $DepartmentError; ?></label>
-                        </div>
-                        <div style="margin-right: 50px;">
-                            <h3>Doctor Name</h3>
-                            <input type="text" name="consultant" value="<?php echo $ConsultantName; ?>" style="height: 18px;">
-                            <label for="consultantError" style="color: red; display: block;"><?php echo $ConsultantNameError; ?></label>
-                        </div>
-                        <div style="margin-right: 50px;">
-                            <h3>Time</h3>
-                            <input type="time" name="appointmenttime" value="<?php echo $AppointmentTime; ?>" style="height: 18px;">
-                            <label for="appointmentTimeError" style="color: red; display: block;"><?php echo $AppointmentTimeError; ?></label>
-                        </div>
-                        <div style="margin-right: 50px;">
-                            <h3>Symptoms</h3>
-                            <textarea type="textbox" name="symptoms" value="<?php echo $Symptoms; ?>" style="height: 18px;" placeholder="Write your symptoms here!"></textarea>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="submit" name="submit" value="Create" style="margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px; max-width: 20%; text-decoration:none; text-align:center;">
-                        <input type="reset" name="reset" value="Try Again" style="margin:3px; padding: 10px; font-size: 14px; background-color: red; color: white; border:none; border-radius: 6px; max-width: 20%; text-decoration:none; text-align:center;">
-                    </div>
-                </form>
-
-            </div>
-            <div class="right" style=" width:35%; height:auto;">
-                <div class="adetails">
-                    <!-- <embed src="" type="aplication/pdf"> -->
-                    <h1 align="center"><?php $Header; ?></h1>
-                    <p>
-                        <textarea name="appointmentDetails" cols="30" rows="10"><?php echo $AppointmentDetails; ?></textarea>
-                    </p>
+<!-- <body> -->
+<div class="container">
+    <div class="forms__container">
+        <div class="schedule">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="schedule-form" method="POST" onsubmit="scheduleAppointment(); return false;">
+                <h2 class="title_appointment">Schedule Appointment</h2>
+                <div class="input-field">
+                    <i class='bx bxs-calendar'></i>
+                    <input type="date" name="appointmentdate" id="" placeholder="Select a Date" class="inputs-schedule">
                 </div>
-            </div>
+                <div class="input-field">
+                    <i class='bx bxs-select-multiple'></i>
+                    <select name="department" id="input_department" class="inputs-schedule" value="">
+                        <option disabled selected value="default">--Select Department--</option>
+                        <option id="deparment" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Medicine") echo "selected"; ?> value="Medicine">Medicine</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Arthopedic") echo "selected"; ?> value="Arthopedic">Arthopedic</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Neuromedicine") echo "selected"; ?> value="Neuromedicine">Neuromedicine</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Neurosurgeon") echo "selected"; ?> value="Neurosurgeon">Neurosurgeon</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Dermatologist") echo "selected"; ?> value="Dermatologist">Dermatologist</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Psychiatrist") echo "selected"; ?> value="Psychiatrist">Psychiatrist</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Cardiologist") echo "selected"; ?> value="Cardiologist">Cardiologist</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Paediatrician") echo "selected"; ?> value="Paediatrician">Paediatrican</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Dentistry") echo "selected"; ?> value="Dentistry">Dentistry</option>
+                        <option id="department" name="department" <?php if (isset($_POST['department']) && $_POST['department'] == "Gynecologist") echo "selected"; ?> value="Gynecologist">Gynecologist</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user-md"></i>
+                    <input type="text" name="consultant" id="" placeholder="Give Doctor Preferences" class="inputs-schedule">
+                </div>
+                <div class="input-field">
+                    <i class='bx bxs-time'></i>
+                    <input type="time" name="appointmenttime" class="inputs-schedule" id="">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user-injured"></i>
+                    <textarea name="symptoms" id="" cols="25" rows="2" class="inputs-schedule" placeholder="Symptoms(Optional)"></textarea>
+                </div>
+
+                <input type="submit" class="btn solid" value="submit" name="submit-appointment">
+                <div class="message">
+                    <?php echo "asdasdasd"; ?>
+                </div>
+            </form>
         </div>
-        <div style="top: 90%; left:45%; position:fixed;">
-            <hr>
-            <?php
-            include "../Controllers/Include/footer.php";
-            ?>
+        <div class="all-appointment">
+            <h3>Appointments</h3>
+            <div id="appointment-table">
+            </div>
         </div>
     </div>
 
-</body>
-
-</html>
+    <div class="panels-container">
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>View All Appointment?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe blanditiis alias et vel nesciunt iste, corrupti enim minima, similique, aspernatur cumque! Vero earum amet, delectus est blanditiis alias eligendi!</p>
+                <button type="button" class="btn transparent" id="view-all-button">View All</button>
+            </div>
+            <img src="./../assets/img/Doctor_Isometric.svg" alt="" class="image" />
+        </div>
+        <div class="panel right-panel">
+            <div class="content">
+                <h3>Schedule Appointment?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe blanditiis alias et vel nesciunt iste, corrupti enim minima, similique, aspernatur cumque! Vero earum amet, delectus est blanditiis alias eligendi!</p>
+                <button type="button" class="btn transparent" id="schedule-button">Schedule</button>
+            </div>
+            <img src="./../assets/img/log.svg" alt="" class="image" />
+        </div>
+    </div>
+</div>
+<script src="./../assets/js/app-schedule.js"></script>

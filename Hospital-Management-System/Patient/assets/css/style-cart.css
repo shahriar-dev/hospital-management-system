@@ -1,0 +1,11 @@
+.btn-buy {
+  display: inline-block;
+  padding: 0.7rem 3rem;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+}

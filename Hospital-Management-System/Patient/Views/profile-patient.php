@@ -1,34 +1,8 @@
 <?php
 require "../../../Hospital-Management-System/Patient/Controllers/Validation/profile-patient-validation.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - <?php ?></title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-</head>
-
-<body style="background:#f3f3f3; background-image: url(../../Patient/img/undraw_profile_details.svg); background-position:right bottom; background-size:650px 700px; background-repeat:no-repeat; background-attachment: fixed;">
-    <div style="margin:20px 0 20px 0;">
-        <?php
-        include "../Controllers/Include/header.php";
-        ?>
-    </div>
-    <div style="margin: 0 10px 0 10px;">
-        <?php
-        include "../Controllers/Include/navigation.php";
-        ?>
-    </div>
-    <div style="position: absolute; top: 50%; left:50%; transform:translate(-50%, -50%); width:1000px; display:flex; box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08); ">
+<div style="background:#f3f3f3;">
+    <div style="position: absolute; top: 35%; left:50%; transform:translate(-50%, -50%); width:1000px; display:flex; box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08); ">
         <div class="left" style="width: 65%; background:#fff; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding: 30px 25px;">
             <h1 align="center" style="padding-bottom: 10px;">Profile</h1>
             <h3 style="color: #353c4e; letter-spacing:5px; text-transform:uppercase;">Basic Information</h3>
@@ -132,12 +106,4 @@ require "../../../Hospital-Management-System/Patient/Controllers/Validation/prof
             </div>
         </div>
     </div>
-    <div style="top: 90%; left:45%; position:fixed;">
-        <hr>
-        <?php
-        include "../Controllers/Include/footer.php";
-        ?>
-    </div>
-</body>
-
-</html>
+</div>

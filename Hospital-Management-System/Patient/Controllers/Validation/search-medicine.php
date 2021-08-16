@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-    header("location: ../login-patient.php");
+    // header("location: ../login-patient.php");
     exit();
 } else {
     if ($_SERVER['REQUEST_METHOD'] === "POST") {

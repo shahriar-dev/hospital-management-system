@@ -1,52 +1,46 @@
 <?php
 session_start();
-$Username = "";
-$Password = "";
+require './../../Hospital-Management-System/Patient/model/dbGetPatient.php';
+$UsernameLogin = "";
+$PasswordLogin = "";
 
-$UsernameError = "";
-$PasswordError = "";
+$UsernameErrorLogin = "";
+$PasswordErrorLogin = "";
 $LoginError = "";
 $emptyField = false;
-define("filepath", "../data/patient-details.json");
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if (isset($_POST['submit'])) {
         /* Username */
-        if (empty($_POST['username'])) {
-            $UsernameError = "Username REQUIRED!";
+        if (empty($_POST['username-login'])) {
+            $UsernameErrorLogin = "Username REQUIRED!";
             $emptyField = true;
         } else {
-            $Username = Test_User_Input($_POST['username']);
+            $UsernameLogin = $_POST['username-login'];
 
-            if (!preg_match("/^[A-Za-z0-9. ]*$/", $Username)) {
-                $UsernameError = "Only Number and lowercase, Uppercase Letter are Allowed!";
+            if (!preg_match("/^[A-Za-z0-9. ]*$/", $UsernameLogin)) {
+                $UsernameErrorLogin = "Only Number and lowercase, Uppercase Letter are Allowed!";
                 $emptyField = true;
             }
         }
         /* Password */
-        if (empty($_POST['password'])) {
-            $PasswordError = "You must Enter a Password!";
+        if (empty($_POST['password-login'])) {
+            $PasswordErrorLogin = "You must Enter a Password!";
             $emptyField = true;
         } else {
-            $Password = Test_User_Input($_POST['password']);
+            $PasswordLogin = $_POST['password-login'];
         }
 
         if (!$emptyField) {
-            $retrievedData = json_decode(file_get_contents(filepath));
-            if ($retrievedData != null) {
-                foreach ($retrievedData as $user) {
-                    if ($user->userName == $Username && $user->password == $Password) {
-                        $_SESSION['id'] = $Username;
-                        header("Location: profile-patient.php");
-                        exit();
-                    } else {
-                        $LoginError = "Login FAILED! Check credentials..";
-                    }
-                }
+
+            $response = dbLogin($UsernameLogin, $PasswordLogin);
+
+            if (!$response) {
+                $LoginError = 'Login Failed!';
+            } else {
+                $_SESSION['id'] = $response;
+                header("Location: ../../../../Hospital-Management-System/Patient/Views/");
             }
         }
     }
-}
-function Test_User_Input($Data)
-{
-    return trim(htmlspecialchars(stripslashes($Data)));
 }

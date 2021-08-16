@@ -9,8 +9,8 @@ $Message = "";
 define("filepath1", "../../data/patient-details.json");
 define("filepath2", "../../data/medicine-order-details.json");
 if (!isset($_SESSION['id'])) {
-    header("location: ../login-patient.php");
-    exit();
+    // header("location: ../login-patient.php");
+    // exit();
 } else {
     $id = Test_User_Input($_SESSION['id']);
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -92,8 +92,4 @@ if (!isset($_SESSION['id'])) {
             }
         }
     }
-}
-function Test_User_Input($Data)
-{
-    return trim(htmlspecialchars(stripslashes($Data)));
 }

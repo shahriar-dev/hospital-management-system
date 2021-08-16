@@ -77,7 +77,4 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
     }
 }
-function Test_User_Input($Data)
-{
-    return trim(htmlspecialchars(stripslashes($Data)));
-}
+

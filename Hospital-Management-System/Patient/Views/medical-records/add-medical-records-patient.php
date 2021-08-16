@@ -1,40 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+// session_start();
+// if (!isset($_SESSION['id'])) {
+//     header("location: ../login-patient.php");
+//     exit();
+// }
+?>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="medical-records">
-    <title>Medical Records - Patient</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="./../assets/css/style-medicalRecords.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
-<body>
-    <div style="margin: 20px 0 20px 0">
-        <?php
-        include "../../Controllers/Include/header.php";
-        ?>
+<div class="mr">
+    <div class="wrapper-mr">
+        <header>Add Medical Records</header>
+        <form action="#" class="form-mr">
+            <input type="file" class="file-input" name="file" hidden>
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Browse file to upload</p>
+        </form>
+        <div class="section-mr progress-area"></div>
+        <div class="section-mr uploaded-area"></div>
     </div>
-    <div style="margin: 0 10px 0 10px;">
-        <?php
-        include "../../Controllers/Include/navigation.php";
-        ?>
-    </div>
-    <div>
-        <h1>Add Medical Records</h1>
-    </div>
-    <div style="top: 90%; left:45%; position:fixed;">
-        <hr>
-        <?php
-        require "../../Controllers/Include/footer.php";
-        ?>
-    </div>
-</body>
 
-</html>
+    <script src="./../assets/js/app_medicalRecords.js"></script>
+</div>

@@ -36,8 +36,8 @@
         "password": "Ss1"
     },
     {
-        "firstName": "Rakirul",
-        "lastName": "Haque",
+        "firstName": "Haque",
+        "lastName": "Rakirul",
         "gender": "Male",
         "dob": "2021-08-25",
         "religion": "Muslim",
@@ -47,6 +47,20 @@
         "userName": "rakirul25",
         "password": "Hh1",
         "presentAddress": "220 Spencer Street",
+        "permanentAddress": ""
+    },
+    {
+        "firstName": "Haque",
+        "lastName": "Rakirul",
+        "gender": "Male",
+        "dob": "1999-08-25",
+        "religion": "Muslim",
+        "bloodGroup": "O+",
+        "phoneNumber": "01234567891",
+        "email": "signorrakirulhaque@gmail.com",
+        "userName": "rakir25",
+        "password": "Rr1",
+        "presentAddress": "",
         "permanentAddress": ""
     }
 ]

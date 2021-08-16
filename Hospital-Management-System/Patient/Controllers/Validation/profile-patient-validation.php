@@ -1,5 +1,4 @@
 <?php
-session_start();
 $FirstName = "";
 $LastName = "";
 $Gender = "";
@@ -13,7 +12,7 @@ $BloodGroup = "";
 $PresentAddress = "";
 $PermanentAddress = "";
 if (!isset($_SESSION['id'])) {
-    header("Location: login-patient.php");
+    // header("Location: ./../../../../Hospital-Management-System/Patient/");
 } else {
     $id = Test_User_Input($_SESSION['id']);
     if (isset($_SESSION['eid'])) {
@@ -52,7 +51,4 @@ if (!isset($_SESSION['id'])) {
         $Message = "User not found!";
     }
 }
-function Test_User_Input($Data)
-{
-    return trim(htmlspecialchars(stripslashes($Data)));
-}
+
