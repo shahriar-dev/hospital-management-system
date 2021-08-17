@@ -18,6 +18,11 @@ const smallPasswordRegister = passwordRegister_error.querySelector('small');
 const smallEmailRegister = emailRegister_error.querySelector('small');
 const smallCPasswordRegister = cpasswordRegister_error.querySelector('small');
 
+var usernameValid = false;
+var passwordValid = false;
+var emailValid = false;
+
+
 
 
 signUp.addEventListener('click', ()=> {
@@ -51,15 +56,17 @@ function checkInputsUsernameRegister() {
     const usernameValue = usernameRegister.value.trim();
     if(usernameValue != '') {
         console.log(validateNameRegister);
-
         if(validateNameRegister()) {
             console.log(true);
             setSuccessForUsernameRegister(usernameRegister);
+            usernameValid = true;
         } else {
             setErrorForUsernameRegister(usernameRegister, 'Username can only contain uppercase, lowercase and digit!');
+            usernameValid = false;
         }        
     } else {
         setErrorForUsernameRegister(usernameRegister, 'Username cannot be blank!');
+        usernameValid = false;
     }
 }
 
@@ -68,12 +75,15 @@ function checkInputsPasswordRegister() {
     if(passwordValue != '') {
         
         if(validatePasswordRegister()) {
-            setSuccessForCPasswordRegister(passwordRegister);
+            setSuccessForPasswordRegister(passwordRegister);
+            passwordValid = true;
         } else {
-            setErrorForPasswordRegister(passwordRegister, 'Password must contain a lowercase, a uppercase and a number!')
+            setErrorForPasswordRegister(passwordRegister, 'Password must contain a lowercase, a uppercase and a number!');
+            passwordValid = false;
         }
     } else {
         setErrorForPasswordRegister(passwordRegister, 'Please Enter Password!');
+        passwordValid = false;
     }
 }
 
@@ -84,10 +94,13 @@ function checkInputsCPasswordRegister() {
 function checkInputsEmailRegister() {
     if(emailRegister.value != '') {
         validateEmailRegister(emailRegister.value.trim()) ? setSuccessForEmailRegister(emailRegister) : setErrorForEmailRegister(emailRegister, 'Invalid Format!');
+        emailValid = true;
     } else {
         setErrorForEmailRegister(emailRegister, 'Please give an Email address!');
+        emailValid = false;
     }
 }
+
 
 
 function setErrorForUsernameRegister(input, message) {
@@ -124,8 +137,8 @@ function setSuccessForPasswordRegister(input) {
     const parent = input.parentNode.parentNode;
 
     smallPasswordRegister.innerHTML = ''
-    passwordRegister.classList.remove('color-green');
-    passwordRegister.classList.add('color-red');  
+    passwordRegister_error.classList.remove('color-green');
+    passwordRegister_error.classList.add('color-red');  
     parent.classList.remove('error');
     parent.classList.add('success');
 }
@@ -187,4 +200,12 @@ function validatePasswordRegister() {
 function validateEmailRegister() {   
     var regex = /^([a-zA-Z0-9.]+)*@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9]+)*$/;
     return regex.test(emailRegister.value.trim());
+}
+
+function jsValidation() {
+    if(usernameValid && passwordValid && emailValid) {
+        return true;
+    } else {
+        return false;
+    }
 }

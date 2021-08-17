@@ -12,11 +12,6 @@ require "../../../Hospital-Management-System/Patient/Controllers/Validation/chan
 </head>
 
 <body>
-    <div>
-        <?php
-        include "../Controllers/Include/header.php";
-        ?>
-    </div>
     <div style="border-radius: 15px 15px 15px 15px; background-color:rgb(0,0,0,6); margin:auto; color:#6460A4; width:800px;">
         <h2 align="center">Change Password - Patient</h2>
     </div>
@@ -53,13 +48,12 @@ require "../../../Hospital-Management-System/Patient/Controllers/Validation/chan
                     </div>
                     <div style="width: 50%;">
                         <!--<input type="submit" name="backlogin" value="Back to Login" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px; max-width: 100%; text-decoration:none; text-align:center;">-->
-                        <a href="login-patient.php" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px; max-width: 80%; text-decoration:none; text-align:center;">Back to Login</a>
+                        <a href="./../" style="display: block; margin:3px; padding: 10px; font-size: 14px; background-color: #67BDD2; color: white; border:none; border-radius: 6px; max-width: 80%; text-decoration:none; text-align:center;">Back to Login</a>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
-
 </body>
 
 </html>

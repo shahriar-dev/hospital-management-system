@@ -69,7 +69,7 @@ require "../../Hospital-Management-System/Patient/Controllers/Validation/registr
                     <div class="password-error" id="password-error">
                         <small><?php echo $PasswordErrorLogin; ?></small>
                     </div>
-                    <a href="#" class="login__forgot">Forgot Password?</a>
+                    <a href="./Views/change-password-patient.php" class="login__forgot">Forgot Password?</a>
                     <input type="submit" class="login__button" name="submit" value="Login">
                     <div class="login-error" id="login-error">
                         <small><?php echo $LoginError; ?></small>
@@ -90,7 +90,7 @@ require "../../Hospital-Management-System/Patient/Controllers/Validation/registr
                     </div>
                 </form>
 
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="login__create none" id="login-up">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="login__create none" id="login-up" onsubmit="return jsValidation();">
                     <h1 class="login__title">Create Account</h1>
 
                     <div class="form__div form__div-one">

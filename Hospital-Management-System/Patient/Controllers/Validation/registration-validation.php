@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 header("Location: ../../../../Hospital-Management-System/Patient/Views/index.php");
             }
         } else {
-            $RegistrationError = "Registration Failed! Try Again...";
+            $RegistrationError = "Registration Failed! Try Again...<br>" . $UsernameErrorRegister . "<br>" . $EmailErrorRegister . "<br>" . $PasswordErrorRegister;
         }
     }
 }
