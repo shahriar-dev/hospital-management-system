@@ -4,6 +4,7 @@ require './../../model/dbBlood.php';
 
 $patientId = empty($_SESSION['id']) ? "" : $_SESSION['id'];
 
+$DonationHistoryArray = array();
 if (empty($patientId)) {
     exit();
 } else {
@@ -11,14 +12,10 @@ if (empty($patientId)) {
     $DonationHistoryList = getDonationHistory($patientId);
 
     if (count($DonationHistoryList) < 1) {
-        echo "No data found!";
-        return null;
+        echo json_encode($DonationHistoryArray);
+        exit();
     }
 }
-
-$DonationHistoryArray = array();
-
-
 
 for ($i = 0; $i < count($DonationHistoryList); $i++) {
     array_push($DonationHistoryArray, array(

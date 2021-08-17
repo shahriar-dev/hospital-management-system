@@ -1,6 +1,7 @@
 <?php
 session_start();
-$id = Test_User_Input($_SESSION['pid']);
+require '../../../Hospital-Management-System/Patient/model/dbUpdatePatient.php';
+$id = Test_User_Input($_SESSION['id']);
 $FirstName = "";
 $LastName = "";
 $Gender = "";
@@ -25,11 +26,33 @@ $PhoneNumberError = "";
 $BloodGroupError = "";
 $changeStatus = false;
 $LoginSuccess = false;
-
 $fnameC = $lnameC = $genderC = $religionC = $emailC = $usernameC = $passwordC = $dobC = $pnumberC = $bgroupC = $peraddressC = $preaddressC = false;
-define("filepath", "../data/patient-details.json");
+if (!isset($_SESSION['id'])) {
+    exit();
+} else {
+    $id = $_SESSION['id'];
 
-
+    $response = dbGetPatientInfo($id);
+    if (count($response) === 1) {
+        foreach ($response as $user) {
+            $FirstName = $user['patient_firstName'];
+            $LastName = $user['patient_lastName'];
+            $Gender = $user['patient_gender'];
+            $BloodGroup = $user['patient_bloodGroup'];
+            $PresentAddress = $user['patient_presentAddress'];
+            $PermanentAddress = $user['patient_permanentAddress'];
+            $Email = $user['patient_email'];
+            $PhoneNumber = $user['patient_phoneNumber'];
+            $Religion = $user['patient_religion'];
+            $DoB = $user['patient_dob'];
+            $Username = $user['patient_username'];
+            $Password = $user['patient_password'];
+            $Message = "Welcome " . $FirstName . " " . $LastName;
+        }
+    } else {
+        $Message = "Information Extraction Failed!";
+    }
+}
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if (isset($_POST['submit'])) {
         if (!empty($_POST['firstName'])) {
@@ -101,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             }
         }
         if (!empty($_POST['permanentAddress'])) {
-            $PresentAddress = Test_User_Input($_POST['permanentAddress']);
+            $PresentAddress = $_POST['permanentAddress'];
             if (!preg_match("/^[A-Za-z0-9., ]*$/", $PermanentAddress)) {
                 $PermanentAddressError = "Only letters, number and (. ,) are allowed!";
                 $peraddressC = false;
@@ -112,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             }
         }
         if (!empty($_POST['password'])) {
-            $Password = Test_User_Input($_POST['password']);
+            $Password = $_POST['password'];
 
             $UpperCase = preg_match("@[A-Z]@", $Password);
             $LowerCase = preg_match("@[a-z]@", $Password);
@@ -133,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $changeStatus = true;
         }
         if (!empty($_POST['phoneNumber'])) {
-            $PhoneNumber = Test_User_Input($_POST['phoneNumber']);
+            $PhoneNumber = $_POST['phoneNumber'];
             $pattern1 = preg_match("/\+?([0-9]{1,})([0-9]{11})/", $PhoneNumber);
             $pattern2 = preg_match("/^[0-9]{11}/", $PhoneNumber);
             if (!$pattern1 && !$pattern2) {
@@ -146,95 +169,58 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             }
         }
         if (!empty($_POST['bloodGroup'])) {
-            $BloodGroup = Test_User_Input($_POST['bloodGroup']);
+            $BloodGroup = $_POST['bloodGroup'];
             $bgroupC = true;
             $changeStatus = true;
         }
-        $retrievedData = file_get_contents(filepath);
-        $retrievedData = json_decode($retrievedData);
+
+
         if ($changeStatus) {
-            $_SESSION['id'] = $Username;
-            if ($retrievedData != null) {
-                foreach ($retrievedData as $user) {
-                    if ($user->userName == $id) {
-                        if ($fnameC) {
-                            $user->firstName = $FirstName;
-                        }
-                        if ($lnameC) {
-                            $user->lastName = $LastName;
-                        }
-                        if ($emailC) {
-                            $user->email = $Email;
-                        }
-                        if ($genderC) {
-                            $user->gender = $Gender;
-                        }
-                        if ($religionC) {
-                            $user->religion = $Religion;
-                        }
-                        if ($usernameC) {
-                            $user->userName = $Username;
-                        }
-                        if ($passwordC) {
-                            $user->password = $Password;
-                        }
-                        if ($dobC) {
-                            $user->dob = $DoB;
-                        }
-                        if ($pnumberC) {
-                            $user->phoneNumber = $PhoneNumber;
-                        }
-                        if ($bgroupC) {
-                            $user->bloodGroup  = $BloodGroup;
-                        }
-                        if ($preaddressC) {
-                            $user->presentAddress  = $PresentAddress;
-                        }
-                        if ($peraddressC) {
-                            $user->permanentAddress  = $PermanentAddress;
-                        }
-                        break;
-                    }
-                }
-                $data_en = json_encode($retrievedData, JSON_PRETTY_PRINT);
-                file_put_contents(filepath, $data_en);
-                $_SESSION['eid'] = $Username;
-                $_SESSION['message'] = "Information Successfully Saved!";
-                header("Location: profile-patient.php");
-                exit();
+            if ($fnameC) {
+                updateFirstName($FirstName, $id);
             }
+            if ($lnameC) {
+                updateLastName($LastName, $id);
+            }
+            if ($emailC) {
+                updateEmail($Email, $id);
+            }
+            if ($genderC) {
+                updateGender($Gender, $id);
+            }
+            if ($religionC) {
+                updateReligion($Religion, $id);
+            }
+            if ($passwordC) {
+                updatePassword($Password, $id);
+            }
+            if ($dobC) {
+                updateDob($DoB, $id);
+            }
+            if ($pnumberC) {
+                updatePhonenumber($PhoneNumber, $id);
+            }
+            if ($bgroupC) {
+                updateBloodGroup($BloodGroup, $id);
+            }
+            if ($preaddressC) {
+                updatePresentAddress($PresentAddress, $id);
+            }
+            if ($peraddressC) {
+                updatePermanentAddress($PermanentAddress, $id);
+            }
+            $_SESSION['message'] = "Information Successfully Saved!";
+            header("Location: index.php");
+            exit();
         } else {
             $_SESSION['message'] = "No information Changed!";
-            header("Location: profile-patient.php");
+            header("Location: index.php");
             exit();
         }
     }
 }
-$retrievedData = file_get_contents(filepath);
-$retrievedData = json_decode($retrievedData);
-if ($retrievedData != null) {
-    foreach ($retrievedData as $user) {
-        if ($user->userName == $id) {
-            //echo $user->firstName;
-            $FirstName = $user->firstName;
-            $LastName = $user->lastName;
-            $Gender = $user->gender;
-            $Religion = $user->religion;
-            $Email = $user->email;
-            $Username = $user->userName;
-            $Password = $user->password;
-            $DoB = $user->dob;
-            $PhoneNumber = $user->phoneNumber;
-            $BloodGroup = $user->bloodGroup;
 
-            $LoginSuccess = true;
-            break;
-        }
-    }
-} else {
-    $Message = "The Database is Empty!";
-}
-
-if (!$LoginSuccess) {
-    $Message = "User not found!";
+function Test_User_Input($Data)
+{
+    return trim(htmlspecialchars(stripslashes($Data)));
 }

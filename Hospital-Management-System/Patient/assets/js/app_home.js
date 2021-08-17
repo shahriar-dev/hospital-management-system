@@ -6,9 +6,9 @@ const link = document.querySelectorAll('.link');
 const section = document.querySelectorAll('s');
 const hlink = document.querySelectorAll('.h-link');
 
-console.log(section);
+// console.log(section);
 
-console.log('not here');
+// console.log('not here');
 
 hlink.forEach((ip, id) => {
     ip.addEventListener('click', () => loadLink(id));
@@ -53,7 +53,7 @@ list.forEach((input, index) => {
 })
 
 function loadPage(index) {
-    console.log(index);
+    // console.log(index);
     link.forEach((item, index1) => {
         item.classList.remove('selected');
         item.style.display = 'none';
@@ -65,6 +65,10 @@ function loadPage(index) {
             item.style.display = item.classList.contains('top__nav') ? 'block' : 'block';
             if(index1 == 3) {
                 medicineNav[0].click();
+            }
+
+            if(index1 == 6) {
+                medicalRecordNav[0].click();
             }
 
             if(index1 == 7) {

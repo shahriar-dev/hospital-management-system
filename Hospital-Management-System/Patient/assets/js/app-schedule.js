@@ -14,7 +14,7 @@ schedule_button.addEventListener('click', removeSchedule);
 viewall.addEventListener('click', addSchedule);
 schedule.addEventListener('click', removeSchedule);
 
-console.log(document.querySelectorAll('.inputs-schedule'));
+// console.log(document.querySelectorAll('.inputs-schedule'));
 
 function scheduleAppointment() {   
     const inputs_schedule = document.querySelectorAll('.inputs-schedule');
@@ -54,8 +54,12 @@ function addSchedule() {
 }
 
 function buildAppointmentTable(jsonData) {
+    if(jsonData < 1) {
+        document.getElementById('appointment-table').innerHTML = "No Scheduled Appointment FOUND!";
+        return;
+    }
     var appointmentTable = document.getElementById('appointment-table');
-
+    appointmentTable.innerHTML = "";
     var table = document.createElement('table');
     table.classList.add('appointment-table-data');
     table.style.border = "1px solid black";

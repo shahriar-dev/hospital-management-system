@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap");
+
+.table-medicalRecords {
+  box-sizing: border-box;
+  margin: 40px;
+  font-family: "Roboto Mono", monospace;
+}
+
+.table_responsive {
+  max-width: 1000px;
+  border: 1px solid #00bcd4;
+  background-color: #efefef33;
+  padding: 15px;
+  overflow: auto;
+  margin: auto;
+  border-radius: 4px;
+}
+
+.all-medical-records-table {
+  width: 100%;
+  font-size: 13px;
+  color: #444;
+  white-space: nowrap;
+}
+
+.all-medical-records-table .thead-all-records {
+  background-color: #00bcd4;
+  color: #fff;
+}
+
+.all-medical-records-table.thead-all-records th {
+  padding: 15px;
+}
+
+.thead-all-records th,
+.thead-all-recordss td {
+  border: 1px solid #00000017;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.action_btn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action_btn > button {
+  text-decoration: none;
+  color: #444;
+  background: #fff;
+  border: 1px solid orange;
+  display: inline-block;
+  padding: 7px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.action_btn > button:hover {
+  box-shadow: 0 3px 8px #0003;
+}
+
+.action_btn > button:nth-child(1) {
+  border-color: #26a69a;
+}
+
+.action_btn > button:nth-child(2) {
+  border-color: orange;
+}
+
+.action_btn > button:nth-child(1):hover {
+  background: #f0f2f0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #000c40,
+    #f0f2f0
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #000c40,
+    #f0f2f0
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.action_btn > button:nth-child(2):hover {
+  background: #616161; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.all-medical-records-table.tbody-all-records tr {
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+.all-medical-records-table.tbody-all-records tr:nth-child(even) {
+  background-color: rgb(238, 238, 238);
+}
+
+.all-medical-records-table.tbody-all-records tr:nth-child(even) {
+  background-color: rgb(238, 238, 238);
+}
+
+.all-medical-records-table.tbody-all-records tr:hover {
+  filter: drop-shadow(0px 2px 6px #0002);
+}

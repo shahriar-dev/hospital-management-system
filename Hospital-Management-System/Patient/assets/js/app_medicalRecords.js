@@ -68,7 +68,9 @@ function uploadFile(name) {
         }
         
 
-        
+    xhr.onload = function() {
+            document.querySelector('.echo').innerHTML = this.responseText;
+    }
     });
 
     let formData = new FormData(formMr);

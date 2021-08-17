@@ -116,30 +116,27 @@ productCenter.forEach((div, i) => {
     }
 })
 
-var totalPrice = 0;
-var quantity = 0;
-
 document.querySelectorAll('.addCart').forEach(item => item.addEventListener('click', e => {
     const id = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');    
     for(let i = 0; i < cart.length; i++) {
         if(cart[i].id === id) {
             cart[i].quantity += 1;
-            quantity++;
             updateCart();
             return;
         }
     }
     cart.push({id,quantity:1});
-    quantity++;
+
     updateCart();
 }));
 
 const medicineSection = document.getElementsByClassName('medicine-section');
 const medicineNav = document.querySelectorAll('.medicine-nav');
 
-console.log(document.getElementsByClassName('medicine-section'));
+// console.log(document.getElementsByClassName('medicine-section'));
 
-
+console.log(medicineNav);
+console.log(medicineSection);
 
 medicineNav.forEach((input, index) => { 
     input.addEventListener('click', () => {
@@ -151,7 +148,6 @@ medicineNav.forEach((input, index) => {
 
 // const cartList = document.querySelector('.cart-list');
 function updateCart() {
-    totalPrice = quantity * 100;
     const cartList = document.querySelector('.cart-list');
     cartList.innerHTML = '';
     cartList.innerHTML = `<h1 class="title">Cart Items</h1>`;
@@ -189,38 +185,35 @@ function updateCart() {
     }
 })
 }
-console.log(totalPrice);
 
 function placeMedicineOrder() {
-    const medicineName = document.querySelectorAll('.name');
-    const medicineQuantity = document.querySelectorAll('.price');
-    // console.log(medicineQuantity);
-    const mNameList = [];
-    const mQuantityList = [];
-    medicineName.forEach(mname => {
-        mNameList.push(mname.innerHTML);
-        // console.log(mNameList);
-    })
-    medicineQuantity.forEach(mlist => {
-        mQuantityList.push(mlist.innerHTML);
+    var status = false;
+    const invoice = localStorage.getItem('invoice') ? localStorage.getItem('invoice') : [];
+    let count = 1;
+    cart.forEach(item => {
+        for(let i = 0; i < medicines.length; i++) {
+            if(item.id == medicines[i].id) {
+                invoice.push({id : count, medicineName : medicines[i].medicineName, quantity : item.quantity, price : item.quantity * medicines[i].price});
+                count++;
+                console.log(document.querySelector('.message-medicine-invoice'));
+                var XML = new XMLHttpRequest();
+                XML.onload = function() {
+                    if(XML.onload === 200) {
+                        document.getElementsByClassName('message-medicine-invoice').innerHTML = "Successfully Placed Order!!Thank youu.."; 
+                        status = true;
+                    }
+                }
+                XML.open("POST", "./../../../../Hospital-Management-System/Patient/Controllers/Validation/buy-reserve-medicine.php", false);
+                XML.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                XML.send("medicineName=" + medicines[i].medicineName + "&quantity=" + item.quantity + "&price=" + item.quantity * medicines[i].price);         
+            }
+        }
         
     })
-    // medicines.forEach((medicine, mid) => {
-    //     for(let i = 0; i<cart.length; i++) {
-    //         if(cart[i].id == medicine.id) {
-    //             var XML = new XMLHttpRequest();
-    //             XML.onload =function() {
-    //                 if(i == cart.length -1) {
-
-    //                 }
-    //             }
-
-    //             XML.open("POST", "./../../../../Hospital-Management-System/Patient/Controllers/Validation/buy-reserve-medicine.php");
-    //             XML.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //             XML.send("medicineName=" + )
-    //         }
-    //     }
-    // })
+    if(status) {
+        console.log('successful!');
+        document.getElementsByClassName('message-medicine-invoice')[0].innerHTML = "Successfully Placed Order!!Thank youu..";
+    }
 }
 
 

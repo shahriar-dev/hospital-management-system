@@ -53,32 +53,37 @@ function addBooking() {
 }
 
 function buildDonationHistoryTable(jsonData) {
-    var donationHistoryTable = document.getElementById('donationHistory-table');
-    console.log(donationHistoryTable)
-    var table = document.createElement('table');
-    table.classList.add('donationHistory-table-data');
-    table.style.border = "1px solid black";
-    table.innerHTML = `
-                            <tr>
-                                <th>Donation ID</th>
-                                <th>Blood Group</th>
-                                <th>Date</th>
-                                <th>Time Slot</th>
-                                <th>Remarks</th>
-                            </tr>
-`;
+    if(jsonData.length < 1) {
+        return;
+    } else {
+        var donationHistoryTable = document.getElementById('donationHistory-table');
+        console.log(donationHistoryTable)
+        var table = document.createElement('table');
+        table.classList.add('donationHistory-table-data');
+        table.style.border = "1px solid black";
+        table.innerHTML = `
+                                <tr>
+                                    <th>Donation ID</th>
+                                    <th>Blood Group</th>
+                                    <th>Date</th>
+                                    <th>Time Slot</th>
+                                    <th>Remarks</th>
+                                </tr>
+    `;
 
-    for(var i = 0; i < jsonData.length; i++) {
-        var row = ` <tr>
-                        <td>${jsonData[i].id}</td>
-                        <td>${jsonData[i].bloodgroup}</td>
-                        <td>${jsonData[i].date}</td>
-                        <td>${jsonData[i].time}</td>
-                        <td>${jsonData[i].remarks}</td>
-                    </tr>`;
-        table.innerHTML += row;
+        for(var i = 0; i < jsonData.length; i++) {
+            var row = ` <tr>
+                            <td>${jsonData[i].id}</td>
+                            <td>${jsonData[i].bloodgroup}</td>
+                            <td>${jsonData[i].date}</td>
+                            <td>${jsonData[i].time}</td>
+                            <td>${jsonData[i].remarks}</td>
+                        </tr>`;
+            table.innerHTML += row;
+        }
+
+        donationHistoryTable.innerHTML = '';
+        donationHistoryTable.append(table);
     }
 
-    donationHistoryTable.innerHTML = '';
-    donationHistoryTable.append(table);
 }

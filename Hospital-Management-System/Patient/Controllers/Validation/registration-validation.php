@@ -128,7 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (!$emptyField) {
             $response = insertPatient($UsernameRegister, $EmailRegister, $PasswordRegister);
             if ($response) {
-                $_SESSION['id'] = $UsernameRegister;
+                $patient = dbGetPatientId($UsernameRegister);
+                $_SESSION['id'] = $patient;
                 header("Location: ../../../../Hospital-Management-System/Patient/Views/index.php");
             }
         } else {
@@ -136,4 +137,3 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
     }
 }
-

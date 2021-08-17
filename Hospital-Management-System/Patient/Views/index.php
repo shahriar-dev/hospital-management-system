@@ -30,7 +30,9 @@ require './../../../Hospital-Management-System/Patient/Controllers/Validation/da
 
             <div class="link nav selected">
                 <div class="top__nav">
-                    <a href="#" class="logo">Welcome, <?php echo $_SESSION['id']; ?></a>
+                    <a href="#" class="logo">Welcome, <?php if (isset($_SESSION['name'])) {
+                                                            echo $_SESSION['name'];
+                                                        } ?></a>
                     <nav class="navbar">
                         <a href="#home" class="h-link">Home</a>
                         <a href="#prevent" class="h-link">prevent</a>
@@ -320,20 +322,21 @@ require './../../../Hospital-Management-System/Patient/Controllers/Validation/da
                         <span>Medical Records</span>
                     </a>
                     <nav class="navbar">
-                        <a id="donate" class="cursor">
+                        <a class="record-nav">
                             <i class="fas fa-file-upload"></i>
-                            <span>Add</span></a>
-                        <a id="purchase" class="cursor">
-                            <i class="fas fa-file-export"></i>
-                            <span>Remove</span></a>
-                        <a id="history" class="cursor">
+                            <span>Add</span>
+                        </a>
+                        <a class="record-nav">
                             <i class='bx bxs-file-archive'></i>
                             <span>View All</span>
                         </a>
                     </nav>
                 </div>
-                <div>
-                    <?php include './medical-records/add-medical-records-patient.php' ?>
+                <div class="medical-record-section">
+                    <?php include './medical-records/add-medical-records-patient.php'; ?>
+                </div>
+                <div class="medical-record-section">
+                    <?php include './medical-records/medical-records-history-patient.php'; ?>
                 </div>
             </div>
 

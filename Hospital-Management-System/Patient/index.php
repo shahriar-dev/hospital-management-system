@@ -1,5 +1,6 @@
 <?php
-require "../../Hospital-Management-System/Patient/model/dbConnect.php";
+// require "../../Hospital-Management-System/Patient/model/dbConnect.php";
+require "../../Hospital-Management-System/Patient/Controllers/Validation/data.php";
 require "../../Hospital-Management-System/Patient/Controllers/Validation/login-patient.php";
 require "../../Hospital-Management-System/Patient/Controllers/Validation/registration-validation.php";
 

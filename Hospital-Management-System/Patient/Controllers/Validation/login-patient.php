@@ -39,6 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $LoginError = 'Login Failed!';
             } else {
                 $_SESSION['id'] = $response;
+                $patient = dbGetPatientName($response);
+                $_SESSION['name'] = $patient;
                 header("Location: ../../../../Hospital-Management-System/Patient/Views/");
             }
         }

@@ -16,13 +16,14 @@
 <div class="mr">
     <div class="wrapper-mr">
         <header>Add Medical Records</header>
-        <form action="#" class="form-mr">
+        <form action="#" class="form-mr" method="POST">
             <input type="file" class="file-input" name="file" hidden>
             <i class="fas fa-cloud-upload-alt"></i>
             <p>Browse file to upload</p>
         </form>
         <div class="section-mr progress-area"></div>
         <div class="section-mr uploaded-area"></div>
+        <div class="echo"></div>
     </div>
 
     <script src="./../assets/js/app_medicalRecords.js"></script>

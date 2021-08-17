@@ -1,25 +1,29 @@
 <?php
-function addAppointment($cn, $at, $adate, $ad, $pid)
+
+function addMedicalRecord($filename, $file, $udate, $type, $pid)
 {
     require_once 'dbConnect.php';
+
     $connection = Connect();
     if (!$connection) {
         die("Could not connect to the database!" . mysqli_connect_error());
     }
-    $query = "INSERT INTO patient_appointmentInfo (appointment_consultantName, appointment_time, appointment_date, appointment_department, patient_id) VALUES (?, ?, ?, ?, ?)";
+    $udate = date("Y-m-d h:i");
+    $query = "INSERT INTO patient_medicalRecords (medicalRecords_fileName, medicalRecords_file, medicalRecords_uploadDateTime, medicalRecords_fileType, medicalRecords_patientId)
+                VALUES (?, ?, ?, ?, ?)";
     $sql = $connection->prepare($query);
-    $sql->bind_param("sssss", $cn, $at, $adate, $ad, $pid);
+    $sql->bind_param('sssss', $filename, $file, $udate, $type, $pid);
     return $sql->execute();
 }
 
-function getAppointment($id)
+function getMedicalRecords($id)
 {
     require_once 'dbConnect.php';
     $connection = Connect();
     if (!$connection) {
         die("Could not connect to the database!" . mysqli_connect_error());
     }
-    $query = "SELECT appointment_id,appointment_consultantName, appointment_time, appointment_date, appointment_department FROM patient_appointmentInfo WHERE patient_id = ?";
+    $query = "SELECT * FROM patient_medicalRecords WHERE medicalRecords_patientId = ?";
     $sql = $connection->prepare($query);
     $sql->bind_param('s', $id);
     $sql->execute();

@@ -1,10 +1,11 @@
 <?php
-// require 'dbConnect.php';
-
 function insertPatient($username, $email, $password)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_username, patient_email, patient_password) VALUES (?, ?, ?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("sss", $username, $email, $password);
@@ -13,8 +14,11 @@ function insertPatient($username, $email, $password)
 
 function addFirstName($firstname)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_firstName) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $firstname);
@@ -23,8 +27,11 @@ function addFirstName($firstname)
 
 function addLastName($lastname)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_lastName) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $lastname);
@@ -33,8 +40,11 @@ function addLastName($lastname)
 
 function addGender($gender)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_gender) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $gender);
@@ -43,8 +53,11 @@ function addGender($gender)
 
 function addBloodGroup($bloodgroup)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_bloodGroup) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $bloodgroup);
@@ -53,8 +66,11 @@ function addBloodGroup($bloodgroup)
 
 function addPresentAddress($presentAddress)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_presentAddress) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $presentAddress);
@@ -63,8 +79,11 @@ function addPresentAddress($presentAddress)
 
 function addPermanentAddress($permanentAddress)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_permanentAddress) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $permanentAddress);
@@ -73,8 +92,11 @@ function addPermanentAddress($permanentAddress)
 
 function addDob($dob)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_dob) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $dob);
@@ -83,8 +105,11 @@ function addDob($dob)
 
 function addReligion($religion)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_religion) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $religion);
@@ -93,8 +118,11 @@ function addReligion($religion)
 
 function addPhonenumber($phoneNumber)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_phoneNumber) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $phoneNumber);
@@ -103,8 +131,11 @@ function addPhonenumber($phoneNumber)
 
 function addPicture($picture)
 {
+    require_once 'dbConnect.php';
     $connection = Connect();
-
+    if (!$connection) {
+        die("Could not connect to the database!" . mysqli_connect_error());
+    }
     $query = "INSERT INTO patient_information (patient_picture) VALUES (?)";
     $sql = $connection->prepare($query);
     $sql->bind_param("s", $picture);

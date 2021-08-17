@@ -3,21 +3,16 @@ session_start();
 require "./../../model/dbAppointment.php";
 
 $patientId = empty($_SESSION['id']) ? "" : $_SESSION['id'];
-
+$appointmentArray = array();
 if (empty($patientId)) {
     exit();
 } else {
     $appointmentList = getAppointment($patientId);
     if (count($appointmentList) < 1) {
-        echo "No data found!";
-        return null;
+        echo json_encode($appointmentArray);
+        exit();
     }
 }
-
-$appointmentArray = array();
-
-
-
 for ($i = 0; $i < count($appointmentList); $i++) {
     array_push($appointmentArray, array(
         'id' => $appointmentList[$i]['appointment_id'],

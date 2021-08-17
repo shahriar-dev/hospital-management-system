@@ -1,4 +1,7 @@
 <?php
+require '../../../Hospital-Management-System/Patient/model/dbGetPatient.php';
+
+
 $FirstName = "";
 $LastName = "";
 $Gender = "";
@@ -11,44 +14,30 @@ $PhoneNumber = "";
 $BloodGroup = "";
 $PresentAddress = "";
 $PermanentAddress = "";
+$Message = '';
 if (!isset($_SESSION['id'])) {
-    // header("Location: ./../../../../Hospital-Management-System/Patient/");
+    exit();
 } else {
-    $id = Test_User_Input($_SESSION['id']);
-    if (isset($_SESSION['eid'])) {
-        $eid = Test_User_Input($_SESSION['eid']);
-    }
-    $LoginSuccess = false;
-    define("filepath", "../data/patient-details.json");
+    $id = $_SESSION['id'];
 
-    $retrievedData = file_get_contents(filepath);
-    $retrievedData = json_decode($retrievedData);
-    if ($retrievedData != null) {
-        foreach ($retrievedData as $user) {
-            if ($user->userName == $id) {
-                $FirstName = $user->firstName;
-                $LastName = $user->lastName;
-                $Gender = $user->gender;
-                $Religion = $user->religion;
-                $Email = $user->email;
-                $Username = $user->userName;
-                $Password = $user->password;
-                $DoB = $user->dob;
-                $PhoneNumber = $user->phoneNumber;
-                $BloodGroup = $user->bloodGroup;
-                $PresentAddress = $user->presentAddress;
-                $PermanentAddress = $user->permanentAddress;
-                $LoginSuccess = true;
-                $Message = "Welcome " . $FirstName . " " . $LastName;
-                break;
-            }
+    $response = dbGetPatientInfo($id);
+    if (count($response) === 1) {
+        foreach ($response as $user) {
+            $FirstName = $user['patient_firstName'];
+            $LastName = $user['patient_lastName'];
+            $Gender = $user['patient_gender'];
+            $BloodGroup = $user['patient_bloodGroup'];
+            $PresentAddress = $user['patient_presentAddress'];
+            $PermanentAddress = $user['patient_permanentAddress'];
+            $Email = $user['patient_email'];
+            $PhoneNumber = $user['patient_phoneNumber'];
+            $Religion = $user['patient_religion'];
+            $DoB = $user['patient_dob'];
+            $Username = $user['patient_username'];
+            $Password = $user['patient_password'];
+            $Message = "Welcome " . $FirstName . " " . $LastName;
         }
     } else {
-        $Message = "The Database is Empty!";
-    }
-
-    if (!$LoginSuccess) {
-        $Message = "User not found!";
+        $Message = "Information Extraction Failed!";
     }
 }
-

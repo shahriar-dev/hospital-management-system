@@ -1,0 +1,106 @@
+.main-div-profile {
+  background: #f3f3f3;
+  font-style: italic;
+}
+
+.container-profile {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1500px;
+  display: flex;
+  box-shadow: 0 1px 80px 0 rgba(69, 90, 100, 0.08);
+}
+
+.container-profile-left {
+  width: 65%;
+  background: #74ebd5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #acb6e5,
+    #74ebd5
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #acb6e5,
+    #74ebd5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 30px 25px;
+}
+
+.container-profile-left-h1 {
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.container-profile-left-h3 {
+  color: #353c4e;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.container-profile-left-binfo,
+.container-profile-left-cinfo,
+.container-profile-left-ainfo {
+  display: flex;
+  margin-bottom: 25px;
+}
+.container-profile-left-binfo-left,
+.container-profile-left-cinfo-left,
+.container-profile-left-ainfo-left,
+.container-profile-left-ainfo-right {
+  width: 45%;
+}
+
+.binfo-left-data-h4,
+.binfo-right-data-h4,
+.cinfo-left-data-h4,
+.cinfo-right-data-h4,
+.ainfo-left-data-h4,
+.ainfo-right-data-h4,
+.linfo-left-data-h4,
+.linfo-right-data-h4 {
+  color: 353c4e;
+  margin-bottom: 5px;
+}
+
+.binfo-left-data-p,
+.binfo-right-data-p,
+.cinfo-left-data-p,
+.cinfo-right-data-p,
+.ainfo-right-data-p,
+.ainfo-left-data-p,
+.linfo-right-data-p {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #919aa3;
+}
+
+.linfo {
+  margin-bottom: 25px;
+}
+
+.container-profile-right {
+  width: 35%;
+  background: #8e9eab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #eef2f3,
+    #8e9eab
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #eef2f3,
+    #8e9eab
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.linfo {
+  margin-bottom: 25px;
+}
